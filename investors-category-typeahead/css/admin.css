@@ -1,0 +1,24 @@
+#cat-result-wrapper {
+    margin-top: .5rem;
+    border: 1px solid #eeeeee;
+    padding: .5rem .7rem;
+    max-height: 10rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: none;
+}
+
+#cat-result-wrapper li.ta-cat-item {
+    list-style: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#cat-result-wrapper li.ta-cat-item:hover {
+    font-weight: bold;
+}
+
+.tabs-panel #cat-ta {
+    float: left;
+    margin: -1.6rem 0;
+}
