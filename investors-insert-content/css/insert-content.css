@@ -1,0 +1,30 @@
+.in-page-promo {
+    text-align: center;
+    display: block;
+    margin: 0 auto 1em;
+    max-width: 60%;
+}
+
+@media screen and (max-width: 768px) {
+    .in-page-promo {
+        max-width: 75%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .in-page-promo {
+        max-width: 90%;
+    }
+}
+
+.in-page-promo .green {
+    color: #008546;
+}
+
+.in-page-promo .purple {
+    color: #563d93;
+}
+
+.in-page-promo .blue {
+    color: #039;
+}
