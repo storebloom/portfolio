@@ -67,9 +67,9 @@ var AutoQuoteAdmin = ( function( $ ) {
 		 * Trigger the quote style preview.
 		 */
 		previewQuote: function() {
-			var color = color = $( '#auto-quote-color' ).val(),
-				size  = $( '#auto-quote-size option:selected' ).val(),
-				font  = $( '#auto-quote-font option:selected' ).val();
+			var color = $( '#auto-quote-color' ).val(),
+			    size  = $( '#auto-quote-size option:selected' ).val(),
+			    font  = $( '#auto-quote-font option:selected' ).val();
 			
 			this.$previewContainer.css( { 'color': color, 'font-family': font } ).removeClass( 'quote-small quote-medium quote-large quote-xlarge' ).addClass( 'quote-' + size );
 		},
