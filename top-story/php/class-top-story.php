@@ -154,7 +154,7 @@ class Top_Story {
 	/**
 	 * Top Story display function.
 	 *
-	 * @action pre_get_comments
+	 * @action loop_end
 	 */
 	public function display_top_story() {
 		if ( is_admin() || ! is_single() ) {

@@ -35,7 +35,7 @@
     display: none;
 }
 
-.top-post-content .top-title {
+.top-post-content .top-title a {
     font-size: 26px;
     font-weight: bold;
     color: #333;
@@ -45,8 +45,12 @@
     font-size: 13px;
     color: #bbb;
 }
+
 .top-author .top-author-name {
     display: inline;
+}
+
+.top-author .top-author-name a {
     color: #e92102
 }
 
@@ -54,6 +58,13 @@
     display: inline;
     font-style: italic;
     font-size: 13px;
+}
+
+/*Adjustment for transition*/
+@media ( max-width: 755px ) {
+    .top-post-content {
+        max-width: 24rem;
+    }
 }
 
 /*Mobile Styling Starts Here*/
@@ -82,11 +93,11 @@
 
     .top-post-content {
         margin-top: 5px;
-        min-width: 10rem;
-        max-width: 13rem;
+        min-width: none;
+        max-width: 50%;
     }
 
-    .top-post-content .top-title {
+    .top-post-content .top-title a {
         font-size: 17px;
     }
 

@@ -20,12 +20,16 @@
 			| <?php echo esc_html( $m_timestamp ); ?>
 		</div>
 		<div class="top-title">
-            <?php echo esc_html( $top_post->post_title ); ?>
-        </div>
+			<a href="<?php echo esc_url( get_post_permalink( $top_post->ID ) ); ?>">
+				<?php echo esc_html( $top_post->post_title ); ?>
+			</a>
+		</div>
 		<div class="top-author">
 			By:
 			<div class="top-author-name">
-				<?php echo esc_html( $top_author->display_name ); ?>
+				<a href="<?php echo esc_url( get_author_posts_url( $top_author->ID ) ); ?>">
+					<?php echo esc_html( $top_author->display_name ); ?>
+				</a>
 			</div>
 			<div class="top-timestamp">
 				<?php echo esc_html( $timestamp ); ?>
