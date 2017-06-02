@@ -146,9 +146,9 @@ class Top_Story {
 			return;
 		}
 
-		$current_id = get_option( 'current-top-story' );
+		$current_story = get_option( 'current-top-story' );
 
-		echo '<input type="text" name="current-top-story" id="top-story-value" value="' . esc_html( $current_id ) . '" placeholder="search post by title" size="70" />';
+		echo '<input type="text" name="current-top-story" id="top-story-value" value="' . esc_html( $current_story ) . '" placeholder="search post by title" size="70" />';
 	}
 
 	/**
@@ -170,13 +170,10 @@ class Top_Story {
 		$m_timestamp = str_replace( array( ' mins', ' min' ), 'm', $timestamp_time ) . ' ago';
 		$timestamp = $timestamp_time . ' ago';
 
-		// Search for minute(s).
-		$single_min = strpos( $timestamp_time, 'min' );
-		$multi_min = strpos( $timestamp_time, 'mins' );
-
-		if ( false !== $single_min ) {
+		// Search for min(s).
+		if ( false !== strpos( $timestamp_time, 'min' ) ) {
 			$timestamp = str_replace( 'min', 'minute', $timestamp_time ) . ' ago';
-		} elseif ( false !== $multi_min ) {
+		} elseif ( false !== strpos( $timestamp_time, 'mins' ) ) {
 			$timestamp = str_replace( 'mins', 'minutes', $timestamp_time ) . ' ago';
 		}
 
@@ -189,6 +186,7 @@ class Top_Story {
 	 * @action wp_ajax_return_posts
 	 */
 	public function return_posts() {
+		// Security check.
 		check_ajax_referer( $this->plugin->meta_prefix, 'nonce' );
 
 		if ( ! isset( $_POST['key'] ) || '' === $_POST['key'] ) { // WPCS: input var okay.
@@ -211,10 +209,10 @@ class Top_Story {
 		}
 
 		foreach ( $posts_array as $post ) {
-			if ( false !== stripos( $post->post_title, $key_input ) || '' === $key_input ) {
+			if ( false !== stripos( $post->post_title, $key_input ) ) {
 				$post_items[] = sprintf(
 					'<li class="top-story-item" id="%1$d">%2$s</li>',
-					$post->ID,
+					(int) $post->ID,
 					esc_html( $post->post_title )
 				);
 			}
