@@ -74,7 +74,6 @@ var TopStory = ( function( $, wp ) {
 			// Send key to search function and return results if not empty.
 			wp.ajax.post( 'return_posts', {
 				key: key,
-				postid: this.data.postid,
 				nonce: this.data.nonce,
 			} ).always( function( results ) {
 				if ( '' !== results ) {
