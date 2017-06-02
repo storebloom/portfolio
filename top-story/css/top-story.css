@@ -1,0 +1,96 @@
+#top-story-article-wrap {
+    width: 100%;
+    padding: 20px;
+    display: inline-block;
+}
+
+.top-thumb {
+    border-radius: 3px;
+    width: 186px;
+    height: 150px;
+    overflow: hidden;
+    margin-right: 20px;
+    float: left;
+}
+
+.top-thumb img {
+    width: 100%;
+    height: auto;
+}
+
+.top-post-content {
+    margin-top: 15px;
+    float: left;
+    width: 100%;
+    max-width: 26rem;
+}
+
+.top-post-content .top-cat {
+    font-weight: bold;
+    font-size: 9px;
+    color: #bbb;
+}
+
+.top-post-content .top-mobile-timestamp {
+    display: none;
+}
+
+.top-post-content .top-title {
+    font-size: 26px;
+    font-weight: bold;
+    color: #333;
+}
+
+.top-author {
+    font-size: 13px;
+    color: #bbb;
+}
+.top-author .top-author-name {
+    display: inline;
+    color: #e92102
+}
+
+.top-author .top-timestamp {
+    display: inline;
+    font-style: italic;
+    font-size: 13px;
+}
+
+/*Mobile Styling Starts Here*/
+@media ( max-width: 727px ) {
+    .top-post-content .top-mobile-timestamp {
+        display: block;
+        font-style: italic;
+        font-size: 9px;
+        color: #999;
+    }
+
+    .top-post-content .top-cat {
+        float: left;
+        margin-right: 5px;
+    }
+
+    .top-author .top-timestamp {
+        display: none;
+    }
+
+    .top-thumb {
+        width: 100px;
+        height: 100px;
+        margin-right: 15px;
+    }
+
+    .top-post-content {
+        margin-top: 5px;
+        min-width: 10rem;
+        max-width: 13rem;
+    }
+
+    .top-post-content .top-title {
+        font-size: 17px;
+    }
+
+    .top-author {
+        display: none;
+    }
+}
