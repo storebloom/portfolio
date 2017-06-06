@@ -2,9 +2,6 @@
  * Investors Personal Tags.
  */
 
-// Make sure the wp object exists.
-window.wp = window.wp || {};
-
 /* exported InvestorsPersonalTags */
 var InvestorsPersonalTags = ( function( $, wp ) {
 	'use strict';
@@ -29,7 +26,7 @@ var InvestorsPersonalTags = ( function( $, wp ) {
 		/**
 		 * Initialize plugin.
 		 */
-		init: function( data ) {
+		init: function() {
 			this.$container = $( '#taxonomy-post_tag' );
 			this.listen();
 			this.renderTab();
@@ -43,17 +40,17 @@ var InvestorsPersonalTags = ( function( $, wp ) {
 			var self = this;
 
 			// Add tag to personal tags.
-			this.$container.on( 'click', '#post_tag-all button', function( e ) {
+			this.$container.on( 'click', '#post_tag-all button', function() {
 				self.updateTag( $( this ), 'add_tag' );
 			} );
 
 			// Remove tag from personal tags.
-			this.$container.on( 'click', '#post_tag-personal button', function( e ) {
+			this.$container.on( 'click', '#post_tag-personal button', function() {
 				self.updateTag( $( this ), 'remove_tag' );
 			} );
 
 			// Mirror checkbox status on check.
-			this.$container.on( 'click', ':checkbox', function( e ) {
+			this.$container.on( 'click', ':checkbox', function() {
 				self.mirrorCheckboxStatus( $( this ) );
 			} );
 		},
@@ -62,8 +59,7 @@ var InvestorsPersonalTags = ( function( $, wp ) {
 		 * Render user tab.
 		 */
 		renderTab: function( ) {
-			var self = this,
-				$personalTab;
+			var $personalTab;
 
 			// Clone tab.
 			$personalTab = this.$container
@@ -105,9 +101,9 @@ var InvestorsPersonalTags = ( function( $, wp ) {
 				.find( 'li' ).each( function() {
 					// Prefix ids to avoid duplicates.
 					$( this )
-						.prop( 'id', 'personal_' + $( this ).prop( 'id') )
+						.prop( 'id', 'personal_' + $( this ).prop( 'id' ) )
 						.find( 'input' )
-						.prop( 'id', 'personal-' + $( this ).find( 'input' ).prop( 'id') );
+						.prop( 'id', 'personal-' + $( this ).find( 'input' ).prop( 'id' ) );
 
 					if ( $.inArray( parseInt( $( this ).prop( 'id' ).replace( /\D/g, '' ) ), self.data.userTags ) < 0 ) {
 						$( this ).remove();
@@ -133,7 +129,6 @@ var InvestorsPersonalTags = ( function( $, wp ) {
 			}
 		},
 
-
 		/**
 		 * Update tag (add/remove).
 		 */
@@ -147,14 +142,14 @@ var InvestorsPersonalTags = ( function( $, wp ) {
 						'float': 'none',
 						'width': '20px',
 						'background-size': '18px',
-						'margin': '-1px 0 0',
+						'margin': '-1px 0 0'
 					} )
 				);
 
 			// Update backend user data and re-render UI.
 			wp.ajax.post( action, {
 				tag: parseInt( $button.parents( 'li' ).prop( 'id' ).replace( /\D/g, '' ) ),
-				nonce: this.data.nonce,
+				nonce: this.data.nonce
 			} ).always( function( response ) {
 				this.data.userTags = response;
 				this.renderTags();
@@ -179,7 +174,7 @@ var InvestorsPersonalTags = ( function( $, wp ) {
 						'line-height': '14px',
 						'height': '18px',
 						'padding': '0 5px',
-						'margin': '4px 0 0 0',
+						'margin': '4px 0 0 0'
 					} )
 				);
 		},
@@ -192,6 +187,6 @@ var InvestorsPersonalTags = ( function( $, wp ) {
 				id = parseInt( $checkbox.prop( 'id' ).replace( /\D/g, '' ) );
 
 			this.$container.find( 'input[id*="' + id + '"]' ).prop( 'checked', val );
-		},
+		}
 	};
 } )( window.jQuery, window.wp );
