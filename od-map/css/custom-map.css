@@ -1,0 +1,8 @@
+#map-canvas {						
+        width: 100%;			
+        height: 500px;					
+}
+
+#map_wrapper {
+        display: none;
+}
